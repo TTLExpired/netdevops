@@ -1,0 +1,8 @@
+---
+ACME:
+  data:
+    asn: 64705
+
+ISP:
+  data:
+    asn: 10
