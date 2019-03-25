@@ -7566,3 +7566,317 @@ napalm.base.exceptions.ConnectionClosedException: Socket is closed
 2019-03-19 17:07:32,485 - nornir.core.task -     INFO -      start() - xrv2: napalm_get: running task
 2019-03-19 17:07:32,485 - nornir.core.task -     INFO -      start() - xrv1: napalm_get: running task
 2019-03-19 17:07:32,485 - nornir.core.task -     INFO -      start() - xrv2: napalm_get: running task
+2019-03-23 16:53:24,982 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 12 hosts
+2019-03-23 16:53:25,194 - nornir.core.task -    ERROR -      start() - Host 'R10': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 858, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/paramiko/client.py", line 362, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 10.47.254.5
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 87, in _netmiko_open
+    **netmiko_optional_args
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 228, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 312, in __init__
+    self.establish_connection()
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 864, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 10.47.254.5:22
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 51, in open
+    connection.open()
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/ios/ios.py", line 151, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 90, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.47.254.5
+
+2019-03-23 16:53:58,161 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 12 hosts
+2019-03-23 16:55:38,920 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show arp'} on 12 hosts
+2019-03-23 16:57:14,895 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show arp. use_textfxm=True'} on 12 hosts
+2019-03-23 17:02:16,871 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show arp', 'use_textfsm': True} on 12 hosts
+2019-03-23 17:08:37,973 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['arp']} on 12 hosts
+2019-03-23 17:08:37,976 - nornir.core.task -    ERROR -      start() - Host 'xrv1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSXRDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,976 - nornir.core.task -    ERROR -      start() - Host 'R11': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,976 - nornir.core.task -    ERROR -      start() - Host 'R12': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,976 - nornir.core.task -    ERROR -      start() - Host 'xrv2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSXRDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,977 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,977 - nornir.core.task -    ERROR -      start() - Host 'R9': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,978 - nornir.core.task -    ERROR -      start() - Host 'R4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,978 - nornir.core.task -    ERROR -      start() - Host 'R7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,978 - nornir.core.task -    ERROR -      start() - Host 'R5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,978 - nornir.core.task -    ERROR -      start() - Host 'R6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:08:37,978 - nornir.core.task -    ERROR -      start() - Host 'R8': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_arp'
+
+2019-03-23 17:09:48,644 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['config']} on 12 hosts
+2019-03-23 17:09:55,682 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['get_config']} on 12 hosts
+2019-03-23 17:10:21,732 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 12 hosts
+2019-03-23 17:10:55,635 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 12 hosts
+2019-03-23 17:12:45,296 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 12 hosts
+2019-03-23 17:12:45,347 - nornir.core.task -    ERROR -      start() - Host 'R10': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 858, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/paramiko/client.py", line 362, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 10.47.254.5
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 87, in _netmiko_open
+    **netmiko_optional_args
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 228, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 312, in __init__
+    self.establish_connection()
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 864, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 10.47.254.5:22
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 51, in open
+    connection.open()
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/ios/ios.py", line 151, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 90, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.47.254.5
+
+2019-03-23 17:15:44,107 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['bgp_config']} on 12 hosts
+2019-03-23 17:15:44,111 - nornir.core.task -    ERROR -      start() - Host 'R11': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,112 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,112 - nornir.core.task -    ERROR -      start() - Host 'R9': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,113 - nornir.core.task -    ERROR -      start() - Host 'R5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,113 - nornir.core.task -    ERROR -      start() - Host 'R6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,113 - nornir.core.task -    ERROR -      start() - Host 'R8': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,114 - nornir.core.task -    ERROR -      start() - Host 'R7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,114 - nornir.core.task -    ERROR -      start() - Host 'R12': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:15:44,114 - nornir.core.task -    ERROR -      start() - Host 'R4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/napalm/base/base.py", line 653, in get_bgp_config
+    raise NotImplementedError
+NotImplementedError
+
+2019-03-23 17:16:55,828 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_set': 'show ip bgp sum'} on 12 hosts
+2019-03-23 17:16:55,830 - nornir.core.task -    ERROR -      start() - Host 'xrv1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+TypeError: netmiko_send_command() missing 1 required positional argument: 'command_string'
+
+2019-03-23 17:16:55,830 - nornir.core.task -    ERROR -      start() - Host 'xrv2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+TypeError: netmiko_send_command() missing 1 required positional argument: 'command_string'
+
+2019-03-23 17:17:25,168 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip bgp sum'} on 12 hosts
+2019-03-23 17:18:54,707 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip bgp sum'} on 12 hosts
+2019-03-23 17:18:54,752 - nornir.core.task -    ERROR -      start() - Host 'R10': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 858, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/paramiko/client.py", line 362, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 10.47.254.5
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 228, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 312, in __init__
+    self.establish_connection()
+  File "/home/mossesb/anaconda3/envs/p37_netdevops/lib/python3.7/site-packages/netmiko/base_connection.py", line 864, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 10.47.254.5:22
+
