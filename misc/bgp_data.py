@@ -44,8 +44,8 @@ def main():
                 f.write(header + '\n')
 
         for bgp_data in list_bgp_data:
-                for key, value in bgp_data.items():
-                        for nkey, nvalue in value.items():
+                for value in bgp_data.values():
+                        for nvalue in value.values():
                                 for data in nvalue:
                                         with open('bgpdata.csv', 'a') as f:
                                                 f.write(str(data[router_id]) + ',' +
