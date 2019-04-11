@@ -8,7 +8,8 @@ def main():
         devices = ['10.47.254.252',
                    '10.47.254.251',
                    '10.0.7.254',
-                   '10.0.7.253']
+                   '10.0.7.253'
+                   ]
 
         # iosxr driver
         xr_driver = get_network_driver('iosxr')
