@@ -1,7 +1,5 @@
 from napalm import get_network_driver
 
-import json
-
 
 def main():
         '''Get some bgp data and save to a csv file'''
