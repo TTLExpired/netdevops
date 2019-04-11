@@ -1,0 +1,11 @@
+router_id,remote_as,received_routes,transmit_routes,state,flap
+10.0.7.254,10,4,48,Established,2
+200.200.200.1,17666,4,68,Established,1
+10.47.254.251,64705,34,71,Established,4
+10.0.7.253,10,4,54,Established,5
+10.47.254.252,64705,43,75,Established,5
+10.47.254.252,64705,41,6,Established,10
+10.0.7.253,10,4,44,Established,1
+10.47.254.251,64705,41,47,Established,0
+10.47.254.150,64706,4,44,Established,0
+10.0.7.254,10,43,5,Established,0
