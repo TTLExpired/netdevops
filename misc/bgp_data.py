@@ -40,7 +40,7 @@ def main():
         # Make up a csv header and save it.
         header = 'router_id,remote_as,received_routes,transmit_routes,state,flap'
 
-        with open('bgpdata.csv', 'a') as f:
+        with open('bgpdata.csv', 'w') as f:
                 f.write(header + '\n')
 
         for bgp_data in list_bgp_data:
