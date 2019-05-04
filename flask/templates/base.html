@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+    <title>{{ title }} - My first Flask base</title>
+    {% else %}
+    <title>My first Flask base</title>
+    {% endif %}
+</head>
+<body>
+    <div>
+        My Test Site:
+        <a href="/index">Home</a>
+        <a href="/login">Login</a>
+    </div>
+    <hr>
+    {% block content %} {% endblock %}
+    <hr>
+    {% block second_content %} {% endblock %}
+    <hr>
+</body>
+</html>
