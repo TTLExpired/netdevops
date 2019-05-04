@@ -20,7 +20,7 @@ def form():
 
     if form.validate_on_submit():
         return f'Thank you {form.username.data}'
-    # Pass the completed form to the template!
+    # Pass the form to the template!
     return render_template('form.html', form=form)
 
 
