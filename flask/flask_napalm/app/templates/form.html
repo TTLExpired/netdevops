@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Search for IP Address</h1>
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }} <br>
+            {{ form.username }}
+        </p>
+        <p>
+            {{ form.password.label }} <br>
+            {{ form.password }}
+        </p>
+        <p>
+            {{ form.ipaddress.label }} <br>
+            {{ form.ipaddress }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}

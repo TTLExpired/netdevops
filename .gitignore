@@ -2,3 +2,6 @@
 *.work
 __pycache__
 .vscode
+venv
+flask/flaskr/venv/
+flask/flaskr/.pytest_cache/

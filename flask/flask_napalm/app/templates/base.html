@@ -4,22 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if title %}
-    <title>{{ title }} - My first Flask base</title>
-    {% else %}
-    <title>My first Flask base</title>
-    {% endif %}
+    <title>CCG Admin Site</title>
 </head>
 <body>
     <div>
-        My Test Site:
-        <a href="/index">Home</a>
-        <a href="/login">Login</a>
+        Network Admin: <a href="/index">Home</a>
+        Submit IP: <a href="/form.html">Form</a>
     </div>
+
     <hr>
     {% block content %} {% endblock %}
-    <hr>
-    {% block second_content %} {% endblock %}
-    <hr>
 </body>
 </html>
